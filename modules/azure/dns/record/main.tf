@@ -5,7 +5,8 @@ variable "domain_name_zone" {}
 variable "domain_name_target" {}
 
 resource "azurerm_resource_group" "dns" {
-  name = "${var.domain_name_record}.group"
+  name     = "${var.domain_name_record}.${domain_name_zone}"
+  location = "US West"
 }
 
 resource "azurerm_dns_zone" "selected" {
