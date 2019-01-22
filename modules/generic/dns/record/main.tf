@@ -13,7 +13,7 @@ module "aws_dns_record" {
 }
 
 module "azure_dns_record" {
-  source             = "../../../google/dns/record"
+  source             = "../../../azure/dns/record"
   count              = "${var.cloud_provider == "azure" ? 1 : 0}"
   domain_name_record = "${var.domain_name_record}"
   domain_name_zone   = "${var.domain_name_zone}"
@@ -27,3 +27,13 @@ module "google_dns_record" {
   domain_name_zone   = "${var.domain_name_zone}"
   domain_name_target = "${var.domain_name_target}"
 }
+
+// No current Triton setup to test...
+// module "triton_dns_record" {
+//   source             = "../../../triton/dns/record"
+//   count              = "${var.cloud_provider == "triton" ? 1 : 0}"
+//   domain_name_record = "${var.domain_name_record}"
+//   domain_name_zone   = "${var.domain_name_zone}"
+//   domain_name_target = "${var.domain_name_target}"
+// }
+

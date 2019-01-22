@@ -7,6 +7,8 @@ variable "domain_name_target" {}
 data "aws_route53_zone" "selected" {
   count = "${var.count}"
   name  = "${var.domain_name_zone}"
+
+  private_zone = true ## The missing piece (delcarations must be of pub/priv) default: public
 }
 
 resource "aws_route53_record" "www" {
